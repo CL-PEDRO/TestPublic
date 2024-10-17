@@ -39,11 +39,10 @@ def positiva( afn1):
     
 def concatenacion(A1,A2):
     
-    for transicion in A2.final.transiciones:
-        A1.final.transiciones.append(transicion)
-
+    A1.final.transiciones.update(A2.inicial.transiciones)
     A1.final = A2.final
     
+        
     return A1
 
 def union(A1,A2):

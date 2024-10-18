@@ -13,7 +13,7 @@ def kleen( afn1):
     
     return afn3
  
-def opcional( afn1):
+def opcional(afn1):
     
     afn3 =AFND(Estado(),Estado())
     

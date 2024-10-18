@@ -6,7 +6,7 @@ from Funtions import *
 def Creacion(expresionParser):
     
     #MasterAFND = AFND()
-    testArray = '(a|b)*'
+    testArray = 'a|b'
     
     checkedText = agregaPunto(testArray)
 
@@ -65,6 +65,9 @@ def Creacion(expresionParser):
 #print(9)
 
             
-MainNode = Creacion('ab')             
-print("Hola")
-print(MainNode[0].inicial.transiciones)
+MainNode = Creacion('ab')  
+MainNode[0].final.isStateFinal = True
+MainNode[0].final.number = contador
+enumerateOfNodos(MainNode[0].inicial)
+
+print("Hol")

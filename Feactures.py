@@ -2,7 +2,9 @@
 class Estado:
     def __init__(self):
         self.transiciones = {}  # Transiciones a otros estados
-        self.epsilon = []  # Transiciones epsilon
+        self.isStateFinal = False
+        self.isStateInitial = False
+        self.number= None
     
     def agregar_transicion(self, simbolo, estado):
         if simbolo not in self.transiciones:
@@ -15,6 +17,32 @@ class AFND:
         self.final = final
 
 
+
+contador = -1  
+
+def enumerateOfNodos(state):
+    if not state: 
+        return 
+    
+    if state.isStateFinal:  
+        return
+    
+    global contador
+    if state.number is None:  
+        contador += 1
+        state.number = contador  
+    
+    for currentState in state.transiciones.values():
+        if isinstance(currentState, list):
+            # Si el valor es una lista, iteramos sobre los estados dentro de la lista
+            for subState in currentState:
+                enumerateOfNodos(subState)  # Llama recursivamente para cada estado
+        else:
+            # Si el valor es un solo estado, llama la función recursivamente para ese estado
+            enumerateOfNodos(currentState)
+
+
+    
 
 
 

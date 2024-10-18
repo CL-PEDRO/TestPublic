@@ -24,7 +24,7 @@ def makeCaseBase(LetterToTransition):
     
     if NewCaseBase:
         
-        NewCaseBase.inicial.transiciones(f"{LetterToTransition}") = NewCaseBase.final
+        NewCaseBase.inicial.transiciones[LetterToTransition] = NewCaseBase.final
         return NewCaseBase
     
     return None
@@ -33,13 +33,16 @@ def baseCase(ArrayLetrasOperandos):
     
     
     
-    ArrayLetrasOperandosModificados = [] * (len(ArrayLetrasOperandos) + 1 )
+    ArrayLetrasOperandosModificados = [] 
     
     for i,signo in enumerate(ArrayLetrasOperandos):
+        
         if signo.isalpha():
-            ArrayLetrasOperandosModificados[i] = makeCaseBase(signo)
+            ArrayLetrasOperandosModificados.append(makeCaseBase(signo))
         else:
-            ArrayLetrasOperandosModificados[i] = ArrayLetrasOperandos[i]
+            ArrayLetrasOperandosModificados.append(ArrayLetrasOperandos[i])
+            
+    return ArrayLetrasOperandosModificados        
                         
 #------------------------------PARSER
 precedencia = {
@@ -150,4 +153,3 @@ def comprobarDigito(ExpresionR):
     else:
         return ExpresionR.startswith("Digito")
     
-

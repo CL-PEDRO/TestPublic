@@ -29,11 +29,9 @@ def Creacion(expresionParser):
         if isinstance(valor,AFND): 
             pila.append(valor)
         elif valor == "*":
-            
-            
+        
             pila.append(kleen(pila.pop()))
-            
-            
+                      
         elif valor == "+":
             pila.append(positiva(pila.pop()))
         elif valor == "?":
